@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-image: linear-gradient(315deg, #0a0218 0%, #0f0c29 74%);
+  color: #fff;
+  height: 100%;
+}
+
+html {
+  font-size: 14px;
+  @screen md {
+    font-size: 16px;
+  }
+  @screen lg {
+    font-size: 22px;
+  }
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

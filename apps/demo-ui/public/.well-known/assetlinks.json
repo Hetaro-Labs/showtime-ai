@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.hetaro.showtime_ai.demo_ui",
+      "sha256_cert_fingerprints": [
+        "22:0A:B6:EA:78:ED:AE:E5:F8:07:6C:27:DE:27:9D:9A:6A:FD:9C:84:DE:58:12:DF:A4:D5:F9:19:FD:54:DB:F9"
+      ]
+    }
+  }
+]

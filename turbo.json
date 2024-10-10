@@ -1,0 +1,56 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "**/.env",
+    "tsconfig.json"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "web#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "build:watch": {
+      "cache": false
+    },
+    "lint": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "test": {},
+    "test:watch": {
+      "cache": false
+    }
+  },
+  "globalEnv": [
+    "PORT",
+    "NODE_ENV",
+    "JWT_SECRET",
+    "REDIS_URL",
+    "OPENAI_API_KEY",
+    "GOOGLE_APPLICATION_CREDENTIALS_BASE64",
+    "GOOGLE_CLOUD_PROJECT",
+    "GOOGLE_CLOUD_LOCATION",
+    "GOOGLE_VERTEXAI_TEXT_MODEL",
+    "GOOGLE_CLOUD_DATASTORE_DATABASE",
+    "GOOGLE_CSE_ID",
+    "GOOGLE_CSE_API_KEY",
+    "OPENWEATHER_API_KEY",
+    "TELEGRAM_BOT_TOKEN",
+    "COINMARKETCAP_API_KEY",
+    "API_URL"
+  ]
+}

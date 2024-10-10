@@ -1,0 +1,28 @@
+{
+  "name": "showtime-ai",
+  "private": true,
+  "description": "Showtime AI",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "dotenv -- turbo dev",
+    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.1.0",
+    "eslint-config-custom": "*",
+    "prettier": "3.2.5",
+    "turbo": "2.0.6"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "yarn@1.22.19"
+}

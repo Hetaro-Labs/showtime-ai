@@ -1,0 +1,61 @@
+{
+  "name": "@showtime-ai/api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --minify",
+    "deploy": "echo 'Deploy'",
+    "dev": "dotenv -e .env.dev tsx watch src/index.ts",
+    "test": "dotenv -e .env.test -- jest",
+    "test:watch": "dotenv -e .env.test -- jest --watch"
+  },
+  "jest": {
+    "preset": "jest-presets/node"
+  },
+  "dependencies": {
+    "@google-cloud/datastore": "9.0.0",
+    "@google-cloud/logging-winston": "6.0.0",
+    "@google-cloud/speech": "6.6.0",
+    "@google-cloud/text-to-speech": "5.3.0",
+    "@google-cloud/vertexai": "1.2.0",
+    "axios": "1.7.2",
+    "body-parser": "1.20.2",
+    "cors": "2.8.5",
+    "debug": "4.3.4",
+    "express": "4.19.2",
+    "google-auth-library": "9.10.0",
+    "google-gax": "4.3.5",
+    "googleapis": "140.0.1",
+    "jsonwebtoken": "9.0.2",
+    "node-telegram-bot-api": "0.66.0",
+    "openai": "4.47.1",
+    "passport": "0.7.0",
+    "passport-jwt": "4.0.1",
+    "redis": "4.6.14",
+    "socket.io": "4.7.5",
+    "winston": "3.13.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "20.1.4",
+    "@types/debug": "4.1.12",
+    "@types/express": "4.17.21",
+    "@types/jest": "29.5.12",
+    "@types/jsonwebtoken": "9.0.6",
+    "@types/node-telegram-bot-api": "0.64.7",
+    "@types/passport": "1.0.16",
+    "@types/passport-jwt": "4.0.1",
+    "@types/socket.io": "3.0.2",
+    "dotenv-cli": "7.4.2",
+    "eslint-config-custom": "*",
+    "jest": "29.5.0",
+    "jest-presets": "*",
+    "ts-node": "10.9.2",
+    "tsup": "8.1.0",
+    "tsx": "4.16.0",
+    "typescript": "5.4.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

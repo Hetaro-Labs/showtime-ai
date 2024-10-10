@@ -1,0 +1,51 @@
+services:
+  showtime-ai-api:
+    image: ghcr.io/hetaro-labs/showtime-ai-api:latest
+    restart: always
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - PORT=3000
+      - JWT_SECRET=${JWT_SECRET}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT}
+      - GOOGLE_CLOUD_LOCATION=${GOOGLE_CLOUD_LOCATION}
+      - GOOGLE_VERTEXAI_TEXT_MODEL=${GOOGLE_VERTEXAI_TEXT_MODEL}
+      - GOOGLE_CLOUD_DATASTORE_DATABASE=${GOOGLE_CLOUD_DATASTORE_DATABASE}
+      - GOOGLE_CLOUD_REDIS_INSTANCE_ID=${GOOGLE_CLOUD_REDIS_INSTANCE_ID}
+      - GOOGLE_CSE_ID=${GOOGLE_CSE_ID}
+      - GOOGLE_CSE_API_KEY=${GOOGLE_CSE_API_KEY}
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - COINMARKETCAP_API_KEY=${COINMARKETCAP_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
+    volumes:
+      - ./gcp-credentials.json:/app/gcp-credentials.json
+    ports:
+      - 3000:3000
+    depends_on:
+      - redis
+
+  demo-ui:
+    image: ghcr.io/hetaro-labs/showtime-ai-demo-ui:latest
+    restart: always
+    environment:
+      - VIRTUAL_HOST=${DEMO_UI_VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${DEMO_UI_LETSENCRYPT_HOST}
+      - API_URL=http://showtime-ai-api:3000
+    ports:
+      - 3001:80
+    depends_on:
+      - showtime-ai-api
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - 6379:6379
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
